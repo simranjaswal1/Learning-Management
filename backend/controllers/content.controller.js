@@ -3,21 +3,28 @@ import Content from "../models/content.model.js";
 // ✅ Create new content
 export const createContent = async (req, res) => {
   try {
-    const { title, description, contentType, url } = req.body;
-    const newContent = new Content({
-      title,
-      description,
-      contentType,
-      url,
-      createdBy: req.id, // Get from authentication middleware
-    });
+      console.log("User ID from req.user:", req.user); // Debugging
+      
+      if (!req.user || !req.user.id) {
+          return res.status(400).json({ message: "User ID is missing in request" });
+      }
 
-    await newContent.save();
-    res.status(201).json({ message: "Content created successfully", content: newContent });
+      const { title, description, contentType, url } = req.body;
+      const newContent = new Content({
+          title,
+          description,
+          contentType,
+          url,
+          createdBy: req.user.id, // Use req.user.id instead of req.id
+      });
+
+      await newContent.save();
+      res.status(201).json({ message: "Content created successfully", content: newContent });
   } catch (error) {
-    res.status(500).json({ message: "Error creating content", error });
+      res.status(500).json({ message: "Error creating content", error });
   }
 };
+
 
 // ✅ Get all content
 export const getAllContent = async (req, res) => {
@@ -91,10 +98,16 @@ export const likeContent = async (req, res) => {
 // ✅ Add comment
 export const addComment = async (req, res) => {
   try {
+    console.log("User ID from req.user:", req.user); // Debugging
+
+    if (!req.user || !req.user.id) {
+      return res.status(400).json({ message: "User ID is missing in request" });
+    }
+
     const content = await Content.findById(req.params.id);
     if (!content) return res.status(404).json({ message: "Content not found" });
 
-    content.comments.push({ user: req.id, text: req.body.text });
+    content.comments.push({ user: req.user.id, text: req.body.text }); // Fix here
     await content.save();
 
     res.status(201).json({ message: "Comment added", content });
