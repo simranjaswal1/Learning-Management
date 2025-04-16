@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riddles Game Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Riddles Game Hub</h1>
+        <p class="subtitle">Click any card to flip and reveal the answer!</p>
+    </header>
+    
+    <div class="riddles-container">
+        <!-- Riddle 1 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #1</h3>
+                    <p class="riddle-text">What has to be broken before you can use it?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">It's something you eat for breakfast...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">An egg</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 2 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #2</h3>
+                    <p class="riddle-text">I'm tall when I'm young, short when I'm old. What am I?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">It produces light...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A candle</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 3 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #3</h3>
+                    <p class="riddle-text">What gets wet while drying?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You use it after a shower...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A towel</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 4 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #4</h3>
+                    <p class="riddle-text">What has keys but can't open locks?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You type with it...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A keyboard</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 5 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #5</h3>
+                    <p class="riddle-text">What has a head, a tail, but no body?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">It's not alive...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A coin</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 6 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #6</h3>
+                    <p class="riddle-text">What can you catch but not throw?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You don't want to get it...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A cold</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 7 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #7</h3>
+                    <p class="riddle-text">What goes up but never comes down?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">It increases every year...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">Your age</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 8 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #8</h3>
+                    <p class="riddle-text">What has hands but can't clap?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">It tells time...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A clock</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 9 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #9</h3>
+                    <p class="riddle-text">What has a neck but no head?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You can drink from it...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A bottle</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 10 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #10</h3>
+                    <p class="riddle-text">What is full of holes but still holds water?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You use it for cleaning...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A sponge</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 11 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #11</h3>
+                    <p class="riddle-text">What has cities but no houses, forests but no trees?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You can find countries on it...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A map</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 12 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #12</h3>
+                    <p class="riddle-text">What has words but never speaks?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You read it...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A book</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 13 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #13</h3>
+                    <p class="riddle-text">What has a thumb and four fingers but is not alive?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You wear it...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A glove</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 14 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #14</h3>
+                    <p class="riddle-text">What has to be broken before you can use it?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">It's something you eat for breakfast...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">An egg</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 15 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #15</h3>
+                    <p class="riddle-text">What can travel around the world while staying in a corner?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You put it on an envelope...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A stamp</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 16 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #16</h3>
+                    <p class="riddle-text">What has many keys but can't open a single lock?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">It makes music...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A piano</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 17 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #17</h3>
+                    <p class="riddle-text">What gets bigger the more you take away?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">It's not a physical object...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A hole</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 18 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #18</h3>
+                    <p class="riddle-text">What has a face and two hands but no arms or legs?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">It tells time...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A clock</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 19 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #19</h3>
+                    <p class="riddle-text">What has a bottom at the top?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You have two of them...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A leg</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 20 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #20</h3>
+                    <p class="riddle-text">What can you break without touching it?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">It's not a physical object...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A promise</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 21 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #21</h3>
+                    <p class="riddle-text">What goes through towns and over hills but never moves?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">Cars drive on it...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A road</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 22 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #22</h3>
+                    <p class="riddle-text">What has a head and a tail but no body?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You can flip it...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A coin</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 23 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #23</h3>
+                    <p class="riddle-text">What belongs to you but others use it more than you?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">People say it when they meet you...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">Your name</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 24 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #24</h3>
+                    <p class="riddle-text">What has many teeth but can't bite?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You use it to comb your hair...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A comb</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 25 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #25</h3>
+                    <p class="riddle-text">What can run but never walks, has a mouth but never talks?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You might find it in nature...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A river</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 26 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #26</h3>
+                    <p class="riddle-text">What has a ring but no finger?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You might answer it...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A telephone</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 27 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #27</h3>
+                    <p class="riddle-text">What is always in front of you but can't be seen?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">It's coming...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">The future</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 28 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #28</h3>
+                    <p class="riddle-text">What can you hold without ever touching it?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You might do it during a speech...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A conversation</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 29 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #29</h3>
+                    <p class="riddle-text">What has legs but doesn't walk?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You sit at it...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A chair</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Riddle 30 -->
+        <div class="riddle-card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 class="riddle-title">Riddle #30</h3>
+                    <p class="riddle-text">What has a thumb and four fingers but is not alive?</p>
+                    <button class="hint-btn" onclick="showHint(event, this)">💡 Hint</button>
+                    <p class="hint-text">You wear it...</p>
+                </div>
+                <div class="card-back">
+                    <p class="answer-text">A glove</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+</body>
+</html>
