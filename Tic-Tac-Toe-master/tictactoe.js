@@ -5,11 +5,10 @@ var playerX = "X";
 var currPlayer = playerO;
 var gameOver = false;
 
-window.onload = function() {
+window.onload = function(){
     setGame();
 }
-
-function setGame() {
+function setGame(){
     board = [
                 [' ', ' ', ' '],
                 [' ', ' ', ' '],
