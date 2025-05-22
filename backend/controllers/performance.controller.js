@@ -1,50 +1,63 @@
-import Performance from "../models/performance.model.js";
-import Quiz from "../models/quiz.model.js";
-import User from "../models/user.model.js";
+import Quiz from '../models/quiz.model.js';
+import QuizResultModel from '../models/quizresult.model.js';
 
-// ✅ Kid submits quiz answers & performance is evaluated
 export const submitQuiz = async (req, res) => {
   try {
     const { quizId, answers } = req.body;
-    const kidId = req.user.id; // Extract user ID from authentication middleware
+    const userId = req.user?.id; // from authentication middleware
 
-    // Fetch the quiz
-    const quiz = await Quiz.findById(quizId);
-    if (!quiz) return res.status(404).json({ success: false, message: "Quiz not found" });
+    if (!userId) {
+      return res.status(401).json({ success: false, message: 'Unauthorized: User ID missing' });
+    }
+
+    // Fetch quiz
+   const quiz = await Quiz.findById(quizId); // CORRECT!
+
+    if (!quiz) {
+      return res.status(404).json({ success: false, message: "Quiz not found" });
+    }
 
     // Validate answers length
-    if (answers.length !== quiz.questions.length) {
+    if (!answers || answers.length !== quiz.questions.length) {
       return res.status(400).json({ success: false, message: "Incomplete answers provided" });
     }
 
-    // Evaluate Score
+    // Calculate score
     let score = 0;
     quiz.questions.forEach((question, index) => {
-      if (answers[index] === question.correctOption) {
-        score += 1; // Increase score if correct
-      }
+      if (answers[index] === question.correctOption) score++;
     });
 
-    // Store performance record
-    const performance = new Performance({
-      kidId,
+    const percentage = (score / quiz.questions.length) * 100;
+
+    // Save quiz result
+    const quizResult = new QuizResultModel({
+      userId,
       quizId,
+      answers,
       score,
-      completedAt: new Date(),
+      percentage,
+      submittedAt: new Date(),
     });
-    await performance.save();
+    await quizResult.save();
 
     res.status(201).json({
       success: true,
       message: "Quiz submitted successfully",
+      resultId: quizResult._id,
       score,
       totalQuestions: quiz.questions.length,
-      percentage: (score / quiz.questions.length) * 100,
+      percentage,
     });
+
   } catch (error) {
+    console.error('Error submitting quiz:', error);
     res.status(500).json({ success: false, message: "Error submitting quiz", error: error.message });
   }
 };
+
+
+
 
 // ✅ Get kid's quiz performance
 export const getKidPerformance = async (req, res) => {
@@ -73,41 +86,3 @@ export const getAllKidsPerformance = async (req, res) => {
   }
 };
 
-// ✅ Get leaderboard (Top performing kids)
-export const getLeaderboard = async (req, res) => {
-  try {
-    // Aggregate total scores for each kid
-    const leaderboard = await Performance.aggregate([
-      {
-        $group: {
-          _id: "$kidId",
-          totalScore: { $sum: "$score" },
-          quizCount: { $sum: 1 },
-        },
-      },
-      {
-        $lookup: {
-          from: "users",
-          localField: "_id",
-          foreignField: "_id",
-          as: "kidDetails",
-        },
-      },
-      { $unwind: "$kidDetails" },
-      {
-        $project: {
-          _id: 0,
-          kidId: "$kidDetails._id",
-          name: "$kidDetails.name",
-          totalScore: 1,
-          quizCount: 1,
-        },
-      },
-      { $sort: { totalScore: -1 } }, // Sort by highest score
-    ]);
-
-    res.status(200).json({ success: true, leaderboard });
-  } catch (error) {
-    res.status(500).json({ success: false, message: "Error fetching leaderboard", error: error.message });
-  }
-};

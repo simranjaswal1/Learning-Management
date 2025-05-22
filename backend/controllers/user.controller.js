@@ -14,34 +14,42 @@ const generateToken = (user) => {
   );
 };
 
-// **Signup Controller**
+// **Signup Controller (Without Role)**
 export const signup = async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
+    console.log("Incoming Signup Request:", req.body);
 
-    if (!name || !email || !password || !role) {
+    const { name, email, password } = req.body;
+
+    if (!name || !email || !password) {
+      console.log("Missing field(s). Payload:", { name, email, password });
       return res.status(400).json({ message: "All fields are required." });
     }
 
-    let userExists = await User.findOne({ email });
+    const userExists = await User.findOne({ email });
     if (userExists) {
+      console.log("User already exists:", email);
       return res.status(400).json({ message: "Email already in use." });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
     const newUser = new User({
       name,
       email,
-      password: hashedPassword,
-      role
+      password: hashedPassword
     });
 
     await newUser.save();
+
     const token = generateToken(newUser);
 
-    res.status(201).json({ message: "User registered successfully.", token, userId: newUser._id });
+    res.status(201).json({
+      message: "User registered successfully.",
+      token,
+      userId: newUser._id
+    });
   } catch (error) {
+    console.error("Signup Error:", error);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };

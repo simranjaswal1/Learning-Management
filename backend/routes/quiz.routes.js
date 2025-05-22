@@ -1,28 +1,22 @@
-import express from "express";
+import express from 'express';
 import {
   createQuizForStudents,
-  getStudentQuizzes,
   getAllQuizzes,
   getQuizById,
   deleteQuiz,
-} from "../controllers/quiz.controller.js";
-import isAuthenticated from "../middlewares/isAuthenticated.js";
-
+} from '../controllers/quiz.controller.js';
+import isAuthenticated from '../middlewares/isAuthenticated.js';
 const router = express.Router();
 
-// Route for teachers to create a new quiz
-router.post("/createquiz", isAuthenticated, createQuizForStudents);
+router.post('/', createQuizForStudents);
+router.get('/', isAuthenticated, getAllQuizzes);
+router.get('/:quizId', getQuizById);
+router.delete('/:quizId', deleteQuiz);
 
-// Route for kids to fetch their assigned quizzes
-router.get("/student/quiz", isAuthenticated, getStudentQuizzes);
+//router.post('/submit', submitQuizAnswers);
 
-// Route for admins or teachers to fetch all quizzes
-router.get("/allquiz", isAuthenticated, getAllQuizzes);
-
-// Route to get a single quiz by its ID
-router.get("/quiz/:quizId", isAuthenticated, getQuizById);
-
-// Route for teachers to delete a quiz they created
-router.delete("/delete/:quizId", isAuthenticated, deleteQuiz);
+// New routes for quiz results
+//router.get('/results', getAllQuizResults);       // GET /api/quiz/results?userId=xxx&quizId=yyy
+//router.get('/results/:resultId', getQuizResultById); // GET /api/quiz/results/:resultId
 
 export default router;
