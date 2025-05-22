@@ -39,6 +39,9 @@ app.use("/api/quiz", quizRoute);
 app.use("/api/story", storyRoute);
 app.use("/api/course", courseRoute);
 app.use("/api/quizresult",quizResult);
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
 
 
 // Global error handler
