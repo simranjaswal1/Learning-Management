@@ -1,6 +1,15 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8000/api/quiz';
+// Dynamically choose base URL based on environment
+const BASE_URL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:8000/api/quiz'
+    : 'https://learning-management-pblg.onrender.com/api/quiz';
+
+const QUIZ_RESULT_URL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:8000/api/quizresult/user-quizzes'
+    : 'https://learning-management-pblg.onrender.com/api/quizresult/user-quizzes';
 
 const getToken = () => localStorage.getItem('token');
 
@@ -16,15 +25,8 @@ export const createQuiz = (data) =>
   axios.post(`${BASE_URL}/`, data, getAuthHeaders());
 
 // Get all quizzes
-// quizapi.js
 export const getAllQuizzes = () =>
-  axios.get(`${BASE_URL}/`, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-    withCredentials: true,
-  });
-
+  axios.get(`${BASE_URL}/`, getAuthHeaders());
 
 // Get quiz by ID
 export const getQuizById = (quizId) =>
@@ -36,9 +38,4 @@ export const deleteQuiz = (quizId) =>
 
 // Get all quizzes with user scores
 export const getAllQuizzesWithUserScores = () =>
-  axios.get('http://localhost:8000/api/quizresult/user-quizzes', {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
-    withCredentials: true,
-  });
+  axios.get(QUIZ_RESULT_URL, getAuthHeaders());

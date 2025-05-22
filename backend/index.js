@@ -21,11 +21,22 @@ app.use(morgan('dev'));  // Logs all HTTP requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+const allowedOrigins = [
+  'http://localhost:3000', // local frontend
+  'https://learning-management-ruby.vercel.app', // your deployed frontend
+];
+
 app.use(cors({
-  origin: 'http://localhost:3000',  // correct frontend port!
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: function(origin, callback) {
+    // allow requests with no origin (like curl/postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true, // if you want to allow cookies/sessions
 }));
 
 

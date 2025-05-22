@@ -1,9 +1,12 @@
-// src/api/axios.js
 import axios from "axios";
 
+// Use Render backend if available, otherwise fallback to localhost
+const baseURL =
+  "https://learning-management-pblg.onrender.com/api" || "http://localhost:8000/api";
+
 const instance = axios.create({
-  baseURL: "http://localhost:8000/api", // 👈 backend base URL
-  withCredentials: true, // if you plan to handle cookies/sessions
+  baseURL,
+  withCredentials: true, // optional: use only if handling cookies/auth
 });
 
 export default instance;

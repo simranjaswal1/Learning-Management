@@ -1,27 +1,36 @@
 // src/api/axios.js
 import axios from 'axios';
 
-// Function to get JWT token from cookies or localStorage
+// Helper to get token from localStorage or cookies (safer cookie parse)
 const getAuthToken = () => {
-  // Check if the token is stored in cookies or localStorage
-  return localStorage.getItem('token') || document.cookie.split('=')[1]; // Adjust according to your storage method
+  const tokenFromStorage = localStorage.getItem('token');
+  if (tokenFromStorage) return tokenFromStorage;
+
+  // Parse cookies for token (assuming cookie named 'token')
+  const match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
+  return match ? match[2] : null;
 };
 
-// Create an axios instance
+// Dynamically set base URL based on environment
+const baseURL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:8000/api'
+    : 'https://learning-management-pblg.onrender.com/api';
+
 const instance = axios.create({
-  baseURL: 'http://localhost:8000/api',  // Set your base URL here
-  withCredentials: true,  // Ensure cookies are sent with the request
+  baseURL,
+  withCredentials: true, // to send cookies if backend uses sessions
 });
 
-// Attach the JWT token to the headers if it exists
-instance.interceptors.request.use((config) => {
-  const token = getAuthToken();
-  if (token) {
-    config.headers['Authorization'] = `Bearer ${token}`;  // Add the token to headers
-  }
-  return config;
-}, (error) => {
-  return Promise.reject(error);
-});
+instance.interceptors.request.use(
+  (config) => {
+    const token = getAuthToken();
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 export default instance;

@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8000/api/performance";
+// Dynamically select base URL
+const BASE_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:8000/api/performance"
+    : "https://learning-management-pblg.onrender.com/api/performance";
 
 const getToken = () => localStorage.getItem("token");
 
@@ -21,4 +25,3 @@ export const submitQuiz = async ({ quizId, answers }) => {
     throw err;
   }
 };
-

@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './quiz.css';
+
+const BASE_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:8000/api/quizresult/user-quizzes"
+    : "https://learning-management-pblg.onrender.com/api/quizresult/user-quizzes";
+
 const QuizList = () => {
   const [token] = useState(() => localStorage.getItem("token"));
   const [quizzes, setQuizzes] = useState([]);
@@ -16,10 +22,11 @@ const QuizList = () => {
 
     const fetchQuizzes = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/quizresult/user-quizzes", {
+        const res = await axios.get(BASE_URL, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          withCredentials: true,
         });
 
         setQuizzes(res.data.quizzes || []);
