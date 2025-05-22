@@ -1,0 +1,127 @@
+/* Root variables updated for slumber theme */
+:root {
+  --primary: #5B99C2;
+  --secondary: #deb992;
+  --bg-light: #0f1a22;
+  --accent: #1ba098;
+  --text-dark: #ffffff;
+  --text-muted: #b0b0b0;
+  --border-radius: 18px;
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  --transition: 0.3s ease;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-light);
+  margin: 0;
+  padding: 0;
+  color: var(--text-dark);
+}
+
+.course-container {
+  padding: 2rem;
+  
+  margin: 0 auto;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.course-title {
+  text-align: center;
+  font-size: 2.8rem;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(91, 153, 194, 0.3);
+}
+
+.course-description {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+.course-creator {
+  text-align: center;
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+/* Unified card styling for slumber theme */
+.card,
+.module-card,
+.lesson-card {
+  background:  #ffffff;
+  border-radius: var(--border-radius);
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border-left: 8px solid var(--secondary);
+}
+
+.card:hover,
+.lesson-card:hover {
+  background-color: #25343e;
+  transform: translateY(-3px);
+}
+
+/* Module title styles */
+.module-title {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.module-description {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+/* Lesson card title & text */
+.lesson-title {
+  font-size: 1.4rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.lesson-description {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+  white-space: pre-line;
+}
+
+/* Lesson links styled for slumber theme */
+.lesson-link {
+  display: inline-block;
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 1.1rem;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(91, 153, 194, 0.3);
+}
+
+.lesson-link:hover {
+  background-color: #417ea9;
+  transform: scale(1.05);
+}

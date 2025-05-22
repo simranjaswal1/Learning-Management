@@ -1,0 +1,248 @@
+/* Root variables for theme */
+:root {
+  --bg-base: #fdf5df; /* Light background color */
+  --bg-accent: #5ebec4; /* Button accent color */
+  --text-accent: #f92c85; /* Text accent color */
+  --bg-secondary: #e2e6ea; /* Input background color */
+}
+
+/* General Page Styling */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg-base);
+}
+
+/* Base styles for common elements */
+.bg-base {
+  background-color: var(--bg-base);
+}
+
+.bg-accent {
+  background-color: var(--bg-accent);
+}
+
+.text-accent {
+  color: var(--text-accent);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+/* Button and Form Styles */
+button, input, select {
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--bg-accent);
+  box-shadow: 0 0 5px var(--bg-accent);
+}
+
+button:hover {
+  background-color: var(--text-accent);
+  color: white;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+.hero-inner-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  padding: 2rem;
+  background-color: var(--bg-accent); /* Light Teal */
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hero-text-section {
+  flex: 1;
+  text-align: left;
+}
+
+.hero-text-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero-text-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: var(--text-accent);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #e02475; /* Darker Pink */
+}
+
+.hero-image-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image-section img {
+  max-width: 100%;
+  height: auto;
+  max-height: 260px;
+  border-radius: 0.8rem;
+}
+
+/* Book Card Section */
+.book-card-section {
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  margin-top: 3rem;
+}
+
+.book-card-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr; /* Stack books vertically */
+  gap: 2rem;
+}
+
+/* Responsive Design for Mobile-Friendly Layout */
+@media (max-width: 768px) {
+  .hero-text-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text-section p {
+    font-size: 1rem;
+  }
+
+  .hero-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .hero-inner-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .book-card-wrapper {
+    grid-template-columns: 1fr; /* Stack books vertically */
+  }
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design for Extra Small Screens (Mobile) */
+@media (max-width: 576px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.5rem;
+  }
+
+  .form-control, .form-select {
+    font-size: 0.9rem;
+  }
+}
+.course-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.course-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Adjusting card shadow and hover effect */
+.card-shadow:hover {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+/* index.css */
+
+/* Container for the grid */
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 column by default */
+  gap: 1.5rem; /* Space between grid items */
+  padding: 1.5rem;
+}
+
+@media screen and (min-width: 640px) {
+  .story-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for small screens */
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .story-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .story-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
+  }
+}
+
+/* Styling for the individual video container */
+.story-item {
+  background-color: white;
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  overflow: hidden;
+}
+
+/* Aspect ratio for the videos */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Title styling */
+.story-title {
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.125rem; /* 18px */
+}

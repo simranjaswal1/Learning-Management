@@ -1,0 +1,109 @@
+:root {
+  --primary: #5B99C2;
+  --secondary: #deb992;
+  --bg-light: #0f1a22; /* soft dark blue */
+  --accent: #1ba098;
+  --text-dark: #ffffff;
+  --text-muted: #a0a0a0;
+  --border-radius: 18px;
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  --transition: 0.3s ease;
+}
+
+.courses-container {
+  
+  margin: auto;
+  padding: 1rem 2rem;
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.courses-container h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(91, 153, 194, 0.5);
+}
+
+.courses-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 6rem;
+}
+
+.course-card {
+  background: #5ebec4;
+  border-radius: var(--border-radius);
+  padding: 1.8rem 1.6rem;
+  box-shadow: var(--shadow);
+  border-left: 8px solid var(--secondary);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+
+.course-card:hover {
+  background-color: #25343e;
+  transform: translateY(-4px);
+}
+
+.course-card h3 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.course-card p {
+  color: #ffffff;
+  font-size: 1rem;
+  flex-grow: 1;
+  margin-bottom: 1.4rem;
+}
+
+.enroll-btn,
+.enrolled-btn {
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(91, 153, 194, 0.3);
+  transition: var(--transition);
+  align-self: flex-start;
+  user-select: none;
+}
+
+.enroll-btn:hover {
+  background-color: #417ea9;
+  transform: scale(1.05);
+}
+
+.enrolled-btn {
+  background-color: var(--accent);
+  box-shadow: 0 4px 10px rgba(27, 160, 152, 0.3);
+}
+
+.enrolled-btn:hover {
+  background-color: #178c85;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

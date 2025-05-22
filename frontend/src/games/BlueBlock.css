@@ -1,0 +1,109 @@
+.blue-block-container {
+  text-align: center;
+  padding: 2rem 1rem; /* a bit more padding on sides for smaller screens */
+  font-family: 'Poppins', sans-serif;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap; /* wraps on small screens */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* responsive columns */
+  gap: 10px;
+  justify-content: center;
+  margin: 1rem auto;
+  max-width: 320px; /* max width to control size on big screens */
+}
+
+.block {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* maintain square shape */
+  max-width: 80px; /* max size on bigger screens */
+  background-color: #ccc;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.block:hover {
+  transform: scale(1.05);
+}
+
+.block.blue {
+  background-color: #3498db;
+}
+
+.restart-btn {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.4rem;
+  background-color: #5b99c2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  width: min(200px, 80%);
+  max-width: 280px;
+}
+
+.restart-btn:hover {
+  background-color: #417da4;
+}
+
+/* Responsive font size and spacing tweaks */
+@media (max-width: 480px) {
+  .info {
+    font-size: 1rem;
+    gap: 1rem;
+  }
+
+  .grid {
+    max-width: 260px;
+    gap: 8px;
+  }
+
+  .block {
+    max-width: 60px;
+  }
+
+  .restart-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .blue-block-container {
+    padding: 3rem 2rem;
+  }
+  
+  .info {
+    font-size: 1.3rem;
+    gap: 2rem;
+  }
+
+  .grid {
+    max-width: 360px;
+    gap: 12px;
+  }
+
+  .block {
+    max-width: 90px;
+  }
+
+  .restart-btn {
+    font-size: 1.1rem;
+    padding: 0.8rem 1.6rem;
+  }
+}
